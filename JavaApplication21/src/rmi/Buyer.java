@@ -5,6 +5,9 @@
  */
 package rmi;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import java.io.Serializable;
 
 /**
@@ -15,7 +18,12 @@ public class Buyer extends User{
     private int ItemID;
     private int AuctionID;
     private double totalamount;
+    
+    MongoClient client = new MongoClient();
+    MongoDatabase charity=client.getDatabase("CharityDB");
+    MongoCollection Buyer=charity.getCollection("Buyer");
 
+    
     public int getItemID() {
         return ItemID;
     }

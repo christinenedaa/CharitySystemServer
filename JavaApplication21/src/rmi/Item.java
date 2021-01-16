@@ -5,7 +5,11 @@
  */
 package rmi;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +23,11 @@ public class Item  implements Serializable{
     public double Price;
     public int StockID;
     public String Category;
+    public ArrayList<Item> Items= new ArrayList<>();
+    
+     MongoClient client = new MongoClient();
+    MongoDatabase charity=client.getDatabase("CharityDB");
+    MongoCollection Item=charity.getCollection("Item");
 
     public Item() {
     }
@@ -30,6 +39,22 @@ public class Item  implements Serializable{
         this.Price = Price;
         this.StockID = StockID;
         this.Category = Category;
+    }
+
+    public Documentation getDocument() {
+        return Document;
+    }
+
+    public void setDocument(Documentation Document) {
+        this.Document = Document;
+    }
+
+    public ArrayList<Item> getItems() {
+        return Items;
+    }
+
+    public void setItems(ArrayList<Item> Items) {
+        this.Items = Items;
     }
 
     public int getItemID() {

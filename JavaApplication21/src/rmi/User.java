@@ -5,6 +5,10 @@
  */
 package rmi;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
 /**
  *
  * @author a_h_s
@@ -14,6 +18,9 @@ class User {
     private int Age;
     private String Email;
     private String Address;
+     MongoClient client = new MongoClient();
+    MongoDatabase charity=client.getDatabase("CharityDB");
+    MongoCollection User=charity.getCollection("User");
 
     public User(String Name, int Age, String Email, String Address) {
         this.Name = Name;

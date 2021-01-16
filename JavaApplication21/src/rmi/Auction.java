@@ -16,8 +16,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 import org.bson.Document;
 import rmi.Item;
 
@@ -54,7 +54,7 @@ public class Auction extends UnicastRemoteObject implements AuctionInterface{
         try {
             this.Date= simpleDateFormat.parse("0000-00-00");
         } catch (ParseException ex) {
-            Logger.getLogger(Auction.class.getName()).log(Level.SEVERE, null, ex);
+           // Logger.getLogger(Auction.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         this.Duration="Not specified";

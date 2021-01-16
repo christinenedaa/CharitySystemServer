@@ -1,5 +1,8 @@
 package rmi;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,6 +22,10 @@ public class Owner extends User {
     private double TotalProfit;
    // private ArrayList <Item> owneditems; 
     private ArrayList <Documentation> Documentations;
+    
+     MongoClient client = new MongoClient();
+    MongoDatabase charity=client.getDatabase("CharityDB");
+    MongoCollection Owner=charity.getCollection("Owner");
 
     
     public Owner(){}
