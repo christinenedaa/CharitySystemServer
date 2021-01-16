@@ -16,6 +16,7 @@ import com.mongodb.client.MongoDatabase;
 public class Payment {
     private double Amount;
     private String PaymentStatus;
+    private PaymentBehaviour PaymentBehaviour;
     
      MongoClient client = new MongoClient();
     MongoDatabase charity=client.getDatabase("CharityDB");
@@ -45,5 +46,7 @@ public class Payment {
         this.PaymentStatus = PaymentStatus;
     }
     
-    
+    void paymentMethod(){
+        
+    }
 }

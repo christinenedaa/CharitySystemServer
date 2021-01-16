@@ -24,9 +24,11 @@ public class Auctionserver  {
             DonorInterface DI = new Donor();
             EventInterface EI = new Event();
             MerchInterface MI = new Merch();
-            
+            LoginInterface LG= new Profile();
             // My RMI Registry
             Registry registry = LocateRegistry.createRegistry(1099);
+            
+            
             
 //            MongoClient client = new MongoClient();
 //
@@ -49,6 +51,7 @@ public class Auctionserver  {
             registry.bind("Donor", DI);
             registry.bind("Event", EI);
             registry.bind("Merch", MI);
+            registry.bind("Profile", LG);
             System.out.println("Auction server side is running..."); 
             
             

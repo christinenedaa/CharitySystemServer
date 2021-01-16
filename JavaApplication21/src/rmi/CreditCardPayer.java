@@ -13,13 +13,13 @@ public class CreditCardPayer implements PaymentBehaviour{
     private String PayerName;
     private String cardNumber;
     private String cvv;
-    private String dateOfExpiry;
+    
 
-    public CreditCardPayer(String PayerName, String cardNumber, String cvv, String dateOfExpiry) {
+    public CreditCardPayer(String PayerName, String cardNumber, String cvv) {
         this.PayerName = PayerName;
         this.cardNumber = cardNumber;
         this.cvv = cvv;
-        this.dateOfExpiry = dateOfExpiry;
+        
     }
     
     @Override

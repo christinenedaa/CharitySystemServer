@@ -11,6 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
+import org.bson.Document;
 
 /**
  *
@@ -47,6 +48,15 @@ public class Event implements SponsorROI ,VolunteerROI , Subject, EventInterface
         reservedevents = new ArrayList<>();
         allevents = new ArrayList<>();
         
+        Document d=new Document("EventID",this.EventID).append("EventName", this.EventName).append("EventDate", this.EventDate)
+                .append("EventLocation", this.EventLocation).append("RequrimentNum", this.RequrimentNum)
+                .append("EventStatus", this.EventStatus).append("AllObservers", this.allObservers)
+                .append("reservedevents", this.reservedevents).append(" allevents", this. allevents).
+                append("Sponsors", this.Sponsors).append("Volunteers", this.Volunteers);
+        Event.insertOne(d);
+       //Document a= new Document("allobservers",this.allObservers);
+      // Event.insertMany(a);
+        
     }
 
     public Event(int EventID, String EventName, String EventDate, String EventLocation, int RequrimentNum, boolean EventStatus) {
@@ -60,6 +70,15 @@ public class Event implements SponsorROI ,VolunteerROI , Subject, EventInterface
         reservedevents = new ArrayList<>();
         allevents = new ArrayList<>();
         this.allObservers = allObservers;
+        
+        Document d=new Document("EventID",this.EventID).append("EventName", this.EventName).append("EventDate", this.EventDate)
+                .append("EventLocation", this.EventLocation).append("RequrimentNum", this.RequrimentNum)
+                .append("EventStatus", this.EventStatus).append("AllObservers", this.allObservers)
+                .append("reservedevents", this.reservedevents).append(" allevents", this. allevents).
+                append("Sponsors", this.Sponsors).append("Volunteers", this.Volunteers);
+        Event.insertOne(d);
+       //Document a= new Document("allobservers",this.allObservers);
+      // Event.insertMany(a);
         
     }
 

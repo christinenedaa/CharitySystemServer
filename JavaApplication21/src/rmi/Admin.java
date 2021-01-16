@@ -26,14 +26,15 @@ public class Admin extends User{
     private ArrayList <Documentation> Documentations;
     private ArrayList <Event> Reservations;
      boolean status;
-    
+    private static Admin AdminObj;
+     
     MongoClient client = new MongoClient();
     MongoDatabase charity=client.getDatabase("CharityDB");
     MongoCollection Admin=charity.getCollection("Admin");
     
     
     
-    private static Admin AdminObj;
+    
     
     private Admin(){
         this.Position="";
