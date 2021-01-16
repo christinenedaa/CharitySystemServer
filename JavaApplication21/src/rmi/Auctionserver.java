@@ -21,29 +21,36 @@ public class Auctionserver  {
         try {
             // My remote object [Skeleton]
             AuctionInterface AI = new Auction();
+            DonorInterface DI = new Donor();
+            EventInterface EI = new Event();
+            MerchInterface MI = new Merch();
             
             // My RMI Registry
             Registry registry = LocateRegistry.createRegistry(1099);
-            /*
-            MongoClient client = new MongoClient();
-
-            MongoDatabase charity=client.getDatabase("CharityDB");
             
-            charity.createCollection("Donor");
-            charity.createCollection("Event");
-charity.createCollection("Item");
-charity.createCollection("Merch");
-charity.createCollection("Payment");
-charity.createCollection("Sponsor");
-charity.createCollection("Stockk");
-charity.createCollection("Volunteer");
-charity.createCollection("User");
+//            MongoClient client = new MongoClient();
+//
+//            MongoDatabase charity=client.getDatabase("CharityDB");
+//            
+//            charity.createCollection("Donor");
+//            charity.createCollection("Event");
+//charity.createCollection("Item");
+//charity.createCollection("Merch");
+//charity.createCollection("Payment");
+//charity.createCollection("Sponsor");
+//charity.createCollection("Stockk");
+//charity.createCollection("Volunteer");
+////charity.createCollection("User");
 
-            */
+            
             
             //Add my object to the RMI Registry
             registry.bind("Auction", AI);
-            System.out.println("Auction server side is running...");  
+            registry.bind("Donor", DI);
+            registry.bind("Event", EI);
+            registry.bind("Merch", MI);
+            System.out.println("Auction server side is running..."); 
+            
             
             /*
             Admin ad = Admin.getAdminobj();

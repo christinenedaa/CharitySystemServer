@@ -9,6 +9,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,11 +19,43 @@ public class Buyer extends User{
     private int ItemID;
     private int AuctionID;
     private double totalamount;
+    ArrayList<Buyer> Allbuyer = new ArrayList<>(); 
+
     
     MongoClient client = new MongoClient();
     MongoDatabase charity=client.getDatabase("CharityDB");
     MongoCollection Buyer=charity.getCollection("Buyer");
 
+    public Buyer(int ItemID, int AuctionID, double totalamount, String Name, int Age, String Email, String Address) {
+        super(Name, Age, Email, Address);
+        this.ItemID = ItemID;
+        this.AuctionID = AuctionID;
+        this.totalamount = totalamount;
+        Allbuyer.add(this);
+        
+    }
+
+    public Buyer(int ItemID, int AuctionID, double totalamount) {
+        this.ItemID = ItemID;
+        this.AuctionID = AuctionID;
+        this.totalamount = totalamount;
+          Allbuyer.add(this);
+    }
+
+    public Buyer() {
+          Allbuyer.add(this);
+    }
+    
+
+    public ArrayList<Buyer> getAllbuyer() {
+        return Allbuyer;
+    }
+
+    public void setAllbuyer(ArrayList<Buyer> Allbuyer) {
+        this.Allbuyer = Allbuyer;
+    }
+
+    
     
     public int getItemID() {
         return ItemID;

@@ -6,6 +6,7 @@
 //package charitysystem;
 package rmi;
 
+import java.rmi.RemoteException;
 import java.util.Date;
 
 /**
@@ -16,6 +17,6 @@ public interface SponsorROI {
     /*
      public void ReserveEvent (Sponsor s,String date,String location,int Req);
 */
-    public void ReserveEvent(String sponsMail,int eventid,String eventName,String eventDate,String location,int req ,boolean state);
+    public void ReserveEvent(String sponsMail,int eventid,String eventName,String eventDate,String location,int req ,boolean state)throws RemoteException;
 
 }

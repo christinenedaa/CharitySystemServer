@@ -8,8 +8,10 @@ package rmi;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import java.io.Serializable;
 import java.util.ArrayList;
+import org.bson.Document;
 
 /**
  *
@@ -30,6 +32,14 @@ public class Item  implements Serializable{
     MongoCollection Item=charity.getCollection("Item");
 
     public Item() {
+        this.ItemID = ItemID;
+        this.OwnerID = OwnerID;
+        this.Authorized = Authorized;
+        this.Price = Price;
+        this.StockID = StockID;
+        this.Category = Category;
+        Document d=new Document("ItemID",ItemID).append("OwnerID", OwnerID).append("Authorized", Authorized).append("Price", Price).append("StockID", StockID).append("Seller", "NOT SPECIFIED").append("HostedItem", "Not specified").append("Documentation", "notspecified");
+    Item.insertOne(d);
     }
 
     public Item(int ItemID, int OwnerID, boolean Authorized, double Price, int StockID, String Category) {
@@ -40,6 +50,7 @@ public class Item  implements Serializable{
         this.StockID = StockID;
         this.Category = Category;
     }
+    
 
     public Documentation getDocument() {
         return Document;
@@ -58,6 +69,7 @@ public class Item  implements Serializable{
     }
 
     public int getItemID() {
+        Document r=(Document) Item.find(Filters.all("ItemID",this.ItemID)).first();
         return ItemID;
     }
 
@@ -66,6 +78,7 @@ public class Item  implements Serializable{
     }
 
     public int getOwnerID() {
+        Document r=(Document) Item.find(Filters.all("OwnerID",this.OwnerID)).first();
         return OwnerID;
     }
 
@@ -82,6 +95,7 @@ public class Item  implements Serializable{
     }
 
     public double getPrice() {
+        Document r=(Document) Item.find(Filters.all("Price",this.Price)).first();
         return Price;
     }
 
@@ -90,6 +104,7 @@ public class Item  implements Serializable{
     }
 
     public int getStockID() {
+        Document r=(Document) Item.find(Filters.all("StockID",this.StockID)).first();
         return StockID;
     }
 
@@ -98,6 +113,7 @@ public class Item  implements Serializable{
     }
 
     public String getCategory() {
+        Document r=(Document) Item.find(Filters.all("Category",this.Category)).first();
         return Category;
     }
 

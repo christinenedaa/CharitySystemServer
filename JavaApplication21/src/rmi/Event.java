@@ -8,6 +8,7 @@ package rmi;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import java.util.Date;
  *
  * @author a_h_s
  */
-public class Event implements SponsorROI ,VolunteerROI , Subject{
+public class Event implements SponsorROI ,VolunteerROI , Subject, EventInterface{
     
     private int EventID;
     private String EventName;
@@ -66,7 +67,7 @@ public class Event implements SponsorROI ,VolunteerROI , Subject{
         return EventID;
     }
 
-    public void setEventID(int EventID) {
+    public void setEventID(int EventID) throws RemoteException {
         this.EventID = EventID;
     }
 
@@ -225,7 +226,7 @@ public class Event implements SponsorROI ,VolunteerROI , Subject{
     }*/
     
     @Override
-    public  void ReserveEvent(String sponsMail,int eventid,String eventName,String eventDate,String location,int req ,boolean state){
+    public  void ReserveEvent(String sponsMail,int eventid,String eventName,String eventDate,String location,int req ,boolean state) throws RemoteException{
     
      Sponsor s = new Sponsor();
         

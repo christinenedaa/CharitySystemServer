@@ -11,6 +11,7 @@ package rmi;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -137,7 +138,7 @@ if (status == false)
     }
     
     
-    public void ReserveEvent(String sponsMail,int eventid,String eventName,String eventDate,String location,int req ,boolean state){
+    public void ReserveEvent(String sponsMail,int eventid,String eventName,String eventDate,String location,int req ,boolean state)throws RemoteException{
     
     roi.ReserveEvent(sponsMail,eventid,eventName,eventDate,location,req,state);
     

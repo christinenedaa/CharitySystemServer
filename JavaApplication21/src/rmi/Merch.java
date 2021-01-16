@@ -11,13 +11,15 @@ package rmi;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 /**
  *
  * @author a_h_s
  */
-public class Merch {
+public class Merch implements MerchInterface{
     private int MerchID;
     private String MerchName;
     private Sponsor Sponsor;
@@ -85,8 +87,9 @@ public class Merch {
     
     
     /***************************************end of setters and getters *************************************************/
-  /*  
-   public void PurchaseItem(int itemid , String buyerMail){
+   
+    @Override
+   public void PurchaseItem(int itemid , String buyerMail) throws RemoteException{
     
        Item temp = new Item();
        Buyer b = new Buyer();
@@ -118,10 +121,11 @@ public class Merch {
       
     
     }
-*/
+
     
   
- public void HostMerch(String smail , String merchname , int Id)
+    @Override
+ public void HostMerch(String smail , String merchname , int Id) throws RemoteException
  {
      Sponsor s = new Sponsor();
      for ( int j =0; j<s.getAllsponsors().size();j++){

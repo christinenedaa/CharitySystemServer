@@ -9,6 +9,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.bson.Document;
@@ -87,7 +88,7 @@ public class Admin extends User{
     
     }
     
-    public boolean ApproveEvent( String Name , String Eventname, int eventid)
+    public boolean ApproveEvent( String Name , String Eventname, int eventid) throws RemoteException
     {
     System.out.println("do you wish to  accept the reservation for Sponosr :"+ Name+"for Event :"+Eventname+eventid);
     Scanner input = new Scanner(System.in);  

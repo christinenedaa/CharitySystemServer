@@ -5,10 +5,12 @@
  */
 package rmi;
 
+import java.rmi.Remote;
+
 /**
  *
  * @author DELL
  */
-public interface PaymentBehaviour {
+public interface PaymentBehaviour extends Remote{
     public void paymentMethod(double Amount); 
 }
