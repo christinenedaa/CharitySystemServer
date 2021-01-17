@@ -26,14 +26,14 @@ import org.bson.Document;
  *
  * @author a_h_s
  */
-public class Volunteer  extends User implements Observer{
+public class Volunteer  extends User implements Observer , Vinterface {
     
     private String Skill;
     private String EducationLevel;
     //private String Interests[];
-    private ArrayList<String> Interests = new ArrayList<>(); 
+    private String Interests ; 
 
-    private boolean PerviousVolunteering;
+    private String PerviousVolunteering;
     Event e = new Event();
     MongoClient client = new MongoClient();
     MongoDatabase charity=client.getDatabase("CharityDB");
@@ -43,7 +43,7 @@ public class Volunteer  extends User implements Observer{
     
     
 
-    public Volunteer(String Skill, String EducationLevel, boolean PerviousVolunteering, String Name, int Age, String Email, String Address) {
+    public Volunteer(String Skill, String EducationLevel, String PerviousVolunteering, String Name, int Age, String Email, String Address) {
         super(Name, Age, Email, Address);
         this.Skill = Skill;
         this.EducationLevel = EducationLevel;
@@ -56,7 +56,7 @@ public class Volunteer  extends User implements Observer{
    
     }
 
-    public Volunteer(String Skill, String EducationLevel, boolean PerviousVolunteering) {
+    public Volunteer(String Skill, String EducationLevel, String PerviousVolunteering) {
         this.Skill = Skill;
         this.EducationLevel = EducationLevel;
         this.PerviousVolunteering = PerviousVolunteering;
@@ -69,9 +69,17 @@ public class Volunteer  extends User implements Observer{
 
     
     
-    public String UploadCertificate(String n){
-    
-    return n;
+    public void Updatedata( String name, String Email, String skills, String level,String interest, String experience ){
+         MongoDatabase charity=client.getDatabase("CharityDB");
+       MongoCollection volunteer=charity.getCollection("Volunteer");
+    this.setName(name);
+    this.setEmail(Email);
+ this.Skill = Skill;
+ this.Interests= Interests;
+        this.EducationLevel = EducationLevel;
+        this.PerviousVolunteering = PerviousVolunteering;
+         Document v=(Document) volunteer.find(Filters.eq("Vemail",Email)).first();
+        
     }
     
     

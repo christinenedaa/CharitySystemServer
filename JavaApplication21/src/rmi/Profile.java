@@ -43,8 +43,8 @@ class Profile extends UnicastRemoteObject implements LoginInterface{
         this.Username = Username;
         this.Password = Password;
         
-       // Document doc=new Document("Username",Username).append("Password", Password);
-    //profile.insertOne(doc);
+        Document doc=new Document("Username",Username).append("Password", Password);
+    profile.insertOne(doc);
         
         
         
