@@ -25,6 +25,7 @@ public class Auctionserver  {
             EventInterface EI = new Event();
             MerchInterface MI = new Merch();
             LoginInterface LG= new Profile();
+            Vinterface VI= (Vinterface) new Volunteer();
             // My RMI Registry
             Registry registry = LocateRegistry.createRegistry(1099);
             
@@ -52,6 +53,7 @@ public class Auctionserver  {
             registry.bind("Event", EI);
             registry.bind("Merch", MI);
             registry.bind("Profile", LG);
+            registry.bind("Volunteer", VI);
             System.out.println("Auction server side is running..."); 
             
             
