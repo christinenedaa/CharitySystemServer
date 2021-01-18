@@ -43,8 +43,8 @@ class Profile extends UnicastRemoteObject implements LoginInterface{
         this.Username = Username;
         this.Password = Password;
         
-        Document doc=new Document("Username",Username).append("Password", Password);
-    profile.insertOne(doc);
+       // Document doc=new Document("Username",Username).append("Password", Password);
+   // profile.insertOne(doc);
         
         
         
@@ -88,27 +88,31 @@ class Profile extends UnicastRemoteObject implements LoginInterface{
     
    @Override 
     public boolean Login(String Username, String Password )  throws RemoteException{
-       MongoDatabase charity=client.getDatabase("CharityDB");
-       MongoCollection admin=charity.getCollection("Admin");
-       MongoCollection buyer=charity.getCollection("Buyer");
-       MongoCollection owner=charity.getCollection("Owner");
-       MongoCollection donor=charity.getCollection("Donor");
-       MongoCollection sponsor=charity.getCollection("Sponsor");
+//       MongoDatabase charity=client.getDatabase("CharityDB");
+//       MongoCollection admin=charity.getCollection("Admin");
+//       MongoCollection buyer=charity.getCollection("Buyer");
+//       MongoCollection owner=charity.getCollection("Owner");
+//       MongoCollection donor=charity.getCollection("Donor");
+//       MongoCollection sponsor=charity.getCollection("Sponsor");
+       MongoCollection profile=charity.getCollection("Profile");
 //   Document d=new Document("Username","sh").append("Password", Password);
 //    admin.insertOne(d);
-       Document adu=(Document) admin.find(Filters.eq("Username",Username)).first();
-       Document adp=(Document) admin.find(Filters.eq("Password",Password)).first();
-        Document bu=(Document) buyer.find(Filters.eq("Username",Username)).first();
-       Document bp=(Document) buyer.find(Filters.eq("Password",Password)).first();
-        Document ou=(Document) owner.find(Filters.eq("Username",Username)).first();
-       Document op=(Document) owner.find(Filters.eq("Password",Password)).first();
-        Document du=(Document) donor.find(Filters.eq("Username",Username)).first();
-       Document dp=(Document) donor.find(Filters.eq("Password",Password)).first();
-        Document su=(Document) sponsor.find(Filters.eq("Username",Username)).first();
-       Document sp=(Document) sponsor.find(Filters.eq("Password",Password)).first();
+//       Document adu=(Document) admin.find(Filters.eq("Username",Username)).first();
+//       Document adp=(Document) admin.find(Filters.eq("Password",Password)).first();
+//        Document bu=(Document) buyer.find(Filters.eq("Username",Username)).first();
+//       Document bp=(Document) buyer.find(Filters.eq("Password",Password)).first();
+//        Document ou=(Document) owner.find(Filters.eq("Username",Username)).first();
+//       Document op=(Document) owner.find(Filters.eq("Password",Password)).first();
+//        Document du=(Document) donor.find(Filters.eq("Username",Username)).first();
+//       Document dp=(Document) donor.find(Filters.eq("Password",Password)).first();
+//        Document su=(Document) sponsor.find(Filters.eq("Username",Username)).first();
+//       Document sp=(Document) sponsor.find(Filters.eq("Password",Password)).first();
+       Document pu=(Document) profile.find(Filters.eq("Username",Username)).first();
+       Document pp=(Document) profile.find(Filters.eq("Password",Password)).first();
        
 
-       if(adu!=null && adp!=null || bu!=null && bp!=null || ou!=null && op!=null || du!=null && dp!=null || su!=null &&sp!=null )
+//       if(adu!=null && adp!=null || bu!=null && bp!=null || ou!=null && op!=null || du!=null && dp!=null || su!=null &&sp!=null )
+if(pu!=null && pp!=null )
        return true;
        else 
            return false;
@@ -117,11 +121,12 @@ class Profile extends UnicastRemoteObject implements LoginInterface{
     
     }
    
+    @Override
    public void Sign(String Username, String Password)throws RemoteException{
     this.Username = Username;
     this.Password = Password;
     
-   Document doc= new Document("Username",this.Username).append("Password", this.Password);;
+   Document doc= new Document("Username",Username).append("Password", Password);
    profile.insertOne(doc);
    System.out.println("Successful Registration, you can login now");
         
