@@ -13,6 +13,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import org.bson.Document;
 
 /**
  *
@@ -37,6 +38,12 @@ public class Sponsor extends User implements Observer{
      allsponsors.add(this);
        this.roi = roi;
        allObservers.add(this);
+       
+       
+       Document d=new Document("SponsorName",getName()).append("Sponsor Age",getAge()).append("Sponsor Email", getEmail())
+.append("Adress",getAddress()).append("Profit",ProfitGain);
+
+Sponsor.insertOne(d);
     
     }
 
@@ -49,6 +56,13 @@ public class Sponsor extends User implements Observer{
         allsponsors.add(this);
         allObservers.add(this);
           this.roi = roi;
+          
+          
+          
+          Document d=new Document("SponsorName",getName()).append("Sponsor Age",getAge()).append("Sponsor Email", getEmail())
+.append("Adress",getAddress()).append("Profit",ProfitGain);
+
+Sponsor.insertOne(d);
     }
     
     /***************************************************************setters and getters***************************/
@@ -57,6 +71,7 @@ public class Sponsor extends User implements Observer{
         return allsponsors;
     } 
     public void setAllsponsors(ArrayList<Sponsor> allsponsors) {
+        
         this.allsponsors = allsponsors;
     }
 

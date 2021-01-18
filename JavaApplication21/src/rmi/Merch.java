@@ -14,6 +14,7 @@ import com.mongodb.client.MongoDatabase;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import org.bson.Document;
 
 /**
  *
@@ -33,9 +34,16 @@ public class Merch implements MerchInterface{
         this.MerchID = MerchID;
         this.MerchName = MerchName;
         this.Sponsor = Sponsor;
+        
+        
+        Document d=new Document("Merch Name",this.MerchName).append("Merch Id", this.MerchID).append("Sponsor", this.Sponsor);
+        Merch.insertOne(d);
     }
 
     public Merch() {
+        
+        Document d=new Document("Merch Name",this.MerchName).append("Merch Id", this.MerchID).append("Sponsor", this.Sponsor);
+Merch.insertOne(d);
     }
     
     
@@ -135,6 +143,9 @@ public class Merch implements MerchInterface{
  Merch temp = new Merch(Id ,merchname ,s);
      s.getMerch().add(temp);
  
+     
+Document d=new Document("Merch Name",smail).append("Merch Id", Id).append("Sponsor",s);
+Merch.insertOne(d);
  
  
  }   
