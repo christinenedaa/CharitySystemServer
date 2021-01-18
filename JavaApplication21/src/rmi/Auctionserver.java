@@ -65,7 +65,10 @@ public class Auctionserver  {
        
       t.ReserveEvent("alaa@alaa", 101,"my Event Name", "1-2-2021", "fi baty", 5, true);
       t.Notify(s,ad.status );*/
-            
+             //Admin ad = Admin.getAdminobj();
+            // Sponsor s = new Sponsor(0,"Alaa",21,"alaa@alaa","share3 alaa");
+             Merch m = new Merch();
+             m.HostMerch("alaa@alaa", "alaa", 3);
             
         } catch (Exception ex) {
            System.out.println(ex);

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -48,12 +49,12 @@ public class Event implements SponsorROI ,VolunteerROI , Subject, EventInterface
         reservedevents = new ArrayList<>();
         allevents = new ArrayList<>();
         
-        Document d=new Document("EventID",this.EventID).append("EventName", this.EventName).append("EventDate", this.EventDate)
-                .append("EventLocation", this.EventLocation).append("RequrimentNum", this.RequrimentNum)
-                .append("EventStatus", this.EventStatus).append("AllObservers", this.allObservers)
-                .append("reservedevents", this.reservedevents).append(" allevents", this. allevents).
-                append("Sponsors", this.Sponsors).append("Volunteers", this.Volunteers);
-        Event.insertOne(d);
+//        Document d=new Document("EventID",this.EventID).append("EventName", this.EventName).append("EventDate", this.EventDate)
+//                .append("EventLocation", this.EventLocation).append("RequrimentNum", this.RequrimentNum)
+//                .append("EventStatus", this.EventStatus).append("AllObservers", this.allObservers)
+//                .append("reservedevents", this.reservedevents).append(" allevents", this. allevents).
+//                append("Sponsors", this.Sponsors).append("Volunteers", this.Volunteers);
+//        Event.insertOne(d);
        //Document a= new Document("allobservers",this.allObservers);
       // Event.insertMany(a);
         
@@ -71,12 +72,12 @@ public class Event implements SponsorROI ,VolunteerROI , Subject, EventInterface
         allevents = new ArrayList<>();
         this.allObservers = allObservers;
         
-        Document d=new Document("EventID",this.EventID).append("EventName", this.EventName).append("EventDate", this.EventDate)
-                .append("EventLocation", this.EventLocation).append("RequrimentNum", this.RequrimentNum)
-                .append("EventStatus", this.EventStatus).append("AllObservers", this.allObservers)
-                .append("reservedevents", this.reservedevents).append(" allevents", this. allevents).
-                append("Sponsors", this.Sponsors).append("Volunteers", this.Volunteers);
-        Event.insertOne(d);
+//        Document d=new Document("EventID",this.EventID).append("EventName", this.EventName).append("EventDate", this.EventDate)
+//                .append("EventLocation", this.EventLocation).append("RequrimentNum", this.RequrimentNum)
+//                .append("EventStatus", this.EventStatus).append("AllObservers", this.allObservers)
+//                .append("reservedevents", this.reservedevents).append(" allevents", this. allevents).
+//                append("Sponsors", this.Sponsors).append("Volunteers", this.Volunteers);
+//        Event.insertOne(d);
        //Document a= new Document("allobservers",this.allObservers);
       // Event.insertMany(a);
         
@@ -254,14 +255,17 @@ public class Event implements SponsorROI ,VolunteerROI , Subject, EventInterface
             s = s.getAllsponsors().get(j);
         }
         Event NewEvent = new Event(eventid,eventName, eventDate, location, req, state);
+        Document d=new Document("EventID",eventid).append("EventName", eventName).append("EventDate", eventDate)
+                .append("EventLocation", location).append("RequrimentNum", req)
+                .append("EventStatus", state);
+        Event.insertOne(d);
+        
      if (reservedevents.size() < 5){
       Admin admin = Admin.getAdminobj();
       
      boolean a= admin.ApproveEvent( sponsMail ,eventName,eventid);
       
       // ConfirmEventReservation(s, eventid,confirmStatus);
-      
-      
      
      } 
         

@@ -36,14 +36,14 @@ public class Merch implements MerchInterface{
         this.Sponsor = Sponsor;
         
         
-        Document d=new Document("Merch Name",this.MerchName).append("Merch Id", this.MerchID).append("Sponsor", this.Sponsor);
-        Merch.insertOne(d);
+//        Document d=new Document("Merch Name",this.MerchName).append("Merch Id", this.MerchID).append("Sponsor", this.Sponsor);
+//        Merch.insertOne(d);
     }
 
     public Merch() {
         
-        Document d=new Document("Merch Name",this.MerchName).append("Merch Id", this.MerchID).append("Sponsor", this.Sponsor);
-Merch.insertOne(d);
+//        Document d=new Document("Merch Name",this.MerchName).append("Merch Id", this.MerchID).append("Sponsor", this.Sponsor);
+//Merch.insertOne(d);
     }
     
     
@@ -144,7 +144,7 @@ Merch.insertOne(d);
      s.getMerch().add(temp);
  
      
-Document d=new Document("Merch Name",smail).append("Merch Id", Id).append("Sponsor",s);
+Document d=new Document("Merch Name",merchname).append("Sponsor Mail", smail).append("Merch Id", Id);
 Merch.insertOne(d);
  
  

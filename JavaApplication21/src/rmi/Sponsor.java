@@ -40,10 +40,10 @@ public class Sponsor extends User implements Observer{
        allObservers.add(this);
        
        
-       Document d=new Document("SponsorName",getName()).append("Sponsor Age",getAge()).append("Sponsor Email", getEmail())
-.append("Adress",getAddress()).append("Profit",ProfitGain);
-
-Sponsor.insertOne(d);
+//       Document d=new Document("SponsorName",getName()).append("Sponsor Age",getAge()).append("Sponsor Email", getEmail())
+//.append("Adress",getAddress()).append("Profit",ProfitGain);
+//
+//Sponsor.insertOne(d);
     
     }
 
@@ -59,8 +59,8 @@ Sponsor.insertOne(d);
           
           
           
-          Document d=new Document("SponsorName",getName()).append("Sponsor Age",getAge()).append("Sponsor Email", getEmail())
-.append("Adress",getAddress()).append("Profit",ProfitGain);
+          Document d=new Document("SponsorName",Name).append("Sponsor Age",Age).append("Sponsor Email", Email)
+.append("Adress",Address).append("Profit",ProfitGain);
 
 Sponsor.insertOne(d);
     }
